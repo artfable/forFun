@@ -152,9 +152,23 @@
         return result;
     };
 
+    /**
+     * Because there is no normal way, to throw custom error with a right stacktrace.
+     * @param message
+     * @returns {Error}
+     */
+    let rsaErrorFactory = function(message) {
+        let error = new Error(message);
+        error.name = 'RsaError';
+        return error;
+    };
+
     root.RSA = function(outKey) {
         let key = (outKey ? outKey : keysGen());
         return {
+            ERRORS: {
+                RSA_ERROR: 'RsaError'
+            },
             /**
              * Don't tell it to anyone!!)))
              *
@@ -179,7 +193,7 @@
             },
             decrypt: function(arr) {
                 if (!key.d) {
-                    throw 'Unavailable, only open key';
+                    throw rsaErrorFactory('Unavailable to decrypt, only open key');
                 }
                 arr = decrypt(arr);
                 let str = '';

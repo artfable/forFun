@@ -75,14 +75,19 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Encrypt</div>
                     <div id="encrypt" class="panel-body">
-                        <textarea class="form-control" placeholder="Text to encrypt"></textarea>
+                        <textarea class="form-control" placeholder="Text to encrypt"><%- model.encrypt %></textarea>
                         <button class="btn btn-primary right">Encrypt</button>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">Decrypt</div>
                     <div id="decrypt" class="panel-body">
-                        <textarea class="form-control" placeholder="Text to decrypt"></textarea>
+                        <!-- if there are errors that can be not only here - then need to sth else -->
+                        <div class="alert alert-danger alert-dismissible <%- model.error ? '' : 'hidden' %>" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>Error!</strong><span><%- model.error %></span>
+                        </div>
+                        <textarea class="form-control" placeholder="Text to decrypt"><%- model.decrypt %></textarea>
                         <button class="btn btn-primary right">Decrypt</button>
                     </div>
                 </div>

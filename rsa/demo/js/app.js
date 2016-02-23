@@ -58,22 +58,35 @@ $(function() {
                 key.d = $('#d_number').val();
             }
             this.model.set({key: key});
+            rsa = new RSA(key);
             this.render();
         },
 
         encrypt: function() {
             let text = $('#encrypt').find('textarea').val();
+            this.model.set({encrypt: text});
             // also can be too long, better block buttons
             $('#decrypt').find('textarea').val(rsa.encrypt(text));
         },
 
         decrypt: function() {
             let text = $('#decrypt').find('textarea').val();
-            $('#encrypt').find('textarea').val(rsa.decrypt(text));
+            this.model.set({decrypt: text});
+            try {
+                $('#encrypt').find('textarea').val(rsa.decrypt(text));
+            } catch (e) {
+                if (e.name != rsa.ERRORS.RSA_ERROR) {
+                    throw e;
+                }
+                console.error(e);
+                this.model.set({error: e.message});
+                this.render();
+            }
         },
 
         render: function() {
-            this.$el.html(this.template({model: this.model.toJSON()}))
+            this.$el.html(this.template({model: this.model.toJSON()}));
+            this.model.unset('error');
         }
     }));
 
