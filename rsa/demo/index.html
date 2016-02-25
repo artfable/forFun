@@ -76,7 +76,7 @@
                     <div class="panel-heading">Encrypt</div>
                     <div id="encrypt" class="panel-body">
                         <textarea class="form-control" placeholder="Text to encrypt"><%- model.encrypt %></textarea>
-                        <button class="btn btn-primary right">Encrypt</button>
+                        <button class="btn btn-primary right" data-loading-text="Generating..." <%- model.key ? '' : 'disabled' %>>Encrypt</button>
                     </div>
                 </div>
                 <div class="panel panel-default">
@@ -88,7 +88,7 @@
                             <strong>Error!</strong><span><%- model.error %></span>
                         </div>
                         <textarea class="form-control" placeholder="Text to decrypt"><%- model.decrypt %></textarea>
-                        <button class="btn btn-primary right">Decrypt</button>
+                        <button class="btn btn-primary right" data-loading-text="Generating..." <%- model.key ? '' : 'disabled' %>>Decrypt</button>
                     </div>
                 </div>
             </div>
