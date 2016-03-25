@@ -1,0 +1,13 @@
+.simple-slider li {
+    top: 0;
+}
+
+.simple-slider li:not(:first-of-type) {
+    /*display: none;*/
+    position: absolute;
+}
+
+.simple-slider {
+    list-style: none;
+    position: relative;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <script src="../lib/jquery-3.0.0-alpha1.js"></script>
+
+    <link rel="stylesheet" href="../css/slider.css">
+    <script src="../js/slider.js"></script>
+
+    <style>
+        .demo .img-imitation {
+            width: 200px;
+            height: 100px;
+            text-align: center;
+            font-size: 48px;
+            background-color: grey;
+        }
+
+        .demo li:nth-child(odd) .img-imitation {
+            background-color: green;
+        }
+    </style>
+
+    <script>
+        $(() => {
+            (new Slider(1000)).start($('.simple-slider').children());
+        });
+    </script>
+
+    <title>Demo</title>
+</head>
+<body class="demo">
+    <ul class="simple-slider">
+        <li>
+            <div class="img-imitation">1</div>
+        </li>
+        <li>
+            <div class="img-imitation">2</div>
+        </li>
+        <li>
+            <div class="img-imitation">3</div>
+        </li>
+        <li>
+            <div class="img-imitation">4</div>
+        </li>
+    </ul>
+</body>
+</html>
